@@ -1,12 +1,7 @@
 package server;
-
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.EOFException;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.SocketException;
 
 public class AppServerSocket {
     public static final int Port = 9876;
@@ -21,29 +16,17 @@ public class AppServerSocket {
         System.out.println("Server Started");
     }
 
-    public void connect() throws IOException {
+    public Socket clientSocket() {
+        return client;
+    }
 
-        while (true) {
+    public void Accept() throws IOException {
 
-            client = serverSocket.accept();
+        client = serverSocket.accept();
+    }
 
-            DataInputStream inputStream = new DataInputStream(client.getInputStream());
-            DataOutputStream outputStream = new DataOutputStream(client.getOutputStream());
+    public void Close() throws IOException {
 
-            String clientMessage = "";
-            try {
-                while (!(clientMessage = inputStream.readUTF()).isEmpty())
-                    System.out.println(clientMessage); //1. Listen
-
-            } catch (EOFException e) {
-
-            }
-            System.out.println(clientMessage);     //2. Write
-            outputStream.writeUTF("Hello world from server");
-
-            if (clientMessage.equals("e")) client.close();
-            System.out.println("Client disconnect");
-        }
-
+        serverSocket.close();
     }
 }
