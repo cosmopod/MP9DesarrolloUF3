@@ -18,25 +18,32 @@ public class AppServerSocket {
     public AppServerSocket() throws IOException {
         serverSocket = new ServerSocket(Port);
         client = new Socket();
+        System.out.println("Server Started");
     }
 
     public void connect() throws IOException {
-        System.out.println("Server Started");
-        while (true){
-            client  = serverSocket.accept();
+
+        while (true) {
+
+            client = serverSocket.accept();
 
             DataInputStream inputStream = new DataInputStream(client.getInputStream());
             DataOutputStream outputStream = new DataOutputStream(client.getOutputStream());
 
-            outputStream.writeUTF("Welcome client");
-            String clientMessage;
-            try{
+            String clientMessage = "";
+            try {
                 while (!(clientMessage = inputStream.readUTF()).isEmpty())
-                    System.out.println(clientMessage);
-            }catch (EOFException e){
-                System.out.println("Client has finished");
+                    System.out.println(clientMessage); //1. Listen
+
+            } catch (EOFException e) {
+
             }
-            System.out.println("Waiting for new client");
+            System.out.println(clientMessage);     //2. Write
+            outputStream.writeUTF("Hello world from server");
+
+            if (clientMessage.equals("e")) client.close();
+            System.out.println("Client disconnect");
         }
+
     }
 }
