@@ -11,18 +11,12 @@ public class Main {
         try {
             DataInputStream inputStream = new DataInputStream(clientSocket.getSocket().getInputStream());
             DataOutputStream outputStream = new DataOutputStream(clientSocket.getSocket().getOutputStream());
-            String message;
             Scanner scanner = new Scanner(System.in);
-            do {
-                System.out.println("Escribe un mensaje:");            // 1. Write
-                message = scanner.nextLine();
-                outputStream.writeUTF(message);
 
-            } while (!message.equals("e"));
-            //String serverMessage = inputStream.readUTF();             // 2. Listen
-            outputStream.close();
-            inputStream.close();
-            //System.out.println(serverMessage);
+            System.out.println(inputStream.readUTF()); // 2. Recibe invitación servidor servidor
+            String username = scanner.nextLine();
+            outputStream.writeUTF(username); // 3. usuario envia su nombre
+
             clientSocket.close();
 
         } catch (IOException e) {

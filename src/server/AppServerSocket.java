@@ -13,7 +13,8 @@ public class AppServerSocket {
     public AppServerSocket() throws IOException {
         serverSocket = new ServerSocket(Port);
         client = new Socket();
-        System.out.println("Server Started");
+        System.out.println("Servidor Iniciado");
+        System.out.println("Esperando ID Cliente");
     }
 
     public Socket clientSocket() {

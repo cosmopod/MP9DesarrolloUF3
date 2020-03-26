@@ -11,30 +11,17 @@ public class Main {
 
         AppServerSocket appServerSocket = new AppServerSocket();
 
-        while (true){
+        while (true) {
 
-            while (true) {
+            appServerSocket.Accept();
 
-                appServerSocket.Accept();
+            DataInputStream inputStream = new DataInputStream(appServerSocket.clientSocket().getInputStream());
+            DataOutputStream outputStream = new DataOutputStream(appServerSocket.clientSocket().getOutputStream());
 
-                DataInputStream inputStream = new DataInputStream(appServerSocket.clientSocket().getInputStream());
-                DataOutputStream outputStream = new DataOutputStream(appServerSocket.clientSocket().getOutputStream());
+            outputStream.writeUTF("Cual es tu nombre?"); // 1. Pregunta nombre cliente
+            System.out.println("Bienvenido: " + inputStream.readUTF()); // 4. recibe nombre usuario
 
-                String clientMessage = "";
-                try {
-                    while (!(clientMessage = inputStream.readUTF()).isEmpty())
-                        System.out.println(clientMessage); //1. Listen
-
-                } catch (EOFException e) {
-
-                }
-                System.out.println(clientMessage);     //2. Write
-                outputStream.writeUTF("Hello world from server");
-
-                if (clientMessage.equals("e")) appServerSocket.clientSocket().close();
-                System.out.println("Client disconnect");
-            }
+            //appServerSocket.clientSocket().close();
         }
-
     }
 }
