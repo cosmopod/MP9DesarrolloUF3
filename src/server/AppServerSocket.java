@@ -9,7 +9,9 @@ import java.net.Socket;
 import java.net.SocketException;
 
 public class AppServerSocket {
-    private final int Port = 4321;
+    public static final int Port = 9876;
+    public static final String Host = "localhost";
+
     private ServerSocket serverSocket;
     private Socket client;
 

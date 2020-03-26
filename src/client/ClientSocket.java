@@ -1,4 +1,6 @@
 package client;
+import server.AppServerSocket;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -9,7 +11,7 @@ public class ClientSocket {
     private Socket socket;
 
     public ClientSocket() throws IOException {
-        this.socket = new Socket("localhost", 4321);
+        this.socket = new Socket(AppServerSocket.Host, AppServerSocket.Port);
     }
 
     public void connect(){
