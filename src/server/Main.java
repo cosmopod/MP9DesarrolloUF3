@@ -21,6 +21,7 @@ public class Main {
             outputStream.writeUTF("Cual es tu nombre?"); // 1. Pregunta nombre cliente
             System.out.println("Bienvenido: " + inputStream.readUTF()); // 4. recibe nombre usuario
 
+
             //appServerSocket.clientSocket().close();
         }
     }

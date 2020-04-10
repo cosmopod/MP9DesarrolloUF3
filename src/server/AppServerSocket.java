@@ -10,6 +10,7 @@ public class AppServerSocket {
     private ServerSocket serverSocket;
     private Socket client;
 
+
     public AppServerSocket() throws IOException {
         serverSocket = new ServerSocket(Port);
         client = new Socket();

@@ -12,6 +12,7 @@ public class ClientSocket {
         return socket;
     }
 
+
     public ClientSocket() throws IOException {
         this.socket = new Socket(AppServerSocket.Host, AppServerSocket.Port);
     }

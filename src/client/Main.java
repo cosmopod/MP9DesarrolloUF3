@@ -15,7 +15,7 @@ public class Main {
 
             System.out.println(inputStream.readUTF()); // 2. Recibe invitación servidor servidor
             String username = scanner.nextLine();
-            outputStream.writeUTF(username); // 3. usuario envia su nombre
+            outputStream.writeUTF(username);  // 3. usuario envia su nombre
 
             clientSocket.close();
 
