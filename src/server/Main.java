@@ -19,7 +19,9 @@ public class Main {
             DataOutputStream outputStream = new DataOutputStream(appServerSocket.clientSocket().getOutputStream());
 
             outputStream.writeUTF("Cual es tu nombre?"); // 1. Pregunta nombre cliente
-            System.out.println("Bienvenido: " + inputStream.readUTF()); // 4. recibe nombre usuario
+            String username = inputStream.readUTF(); // 4. recibe nombre usuario
+            System.out.println("Bienvenido: " +  username);
+            outputStream.writeUTF("Cuantas tareas has de realizar " + username + " ?"); // 5. pregunta el numero de tareas
 
 
             //appServerSocket.clientSocket().close();
