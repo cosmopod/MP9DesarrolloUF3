@@ -13,7 +13,7 @@ public class Main {
 
         while (true) {
 
-            String username = null; // 4. recibe nombre usuario
+            String username = null;
             try {
                 appServerSocket.Accept();
 
@@ -21,7 +21,7 @@ public class Main {
                 DataOutputStream outputStream = new DataOutputStream(appServerSocket.clientSocket().getOutputStream());
 
                 outputStream.writeUTF("Cual es tu nombre?"); // 1. Pregunta nombre cliente
-                username = inputStream.readUTF();
+                username = inputStream.readUTF(); // 4. recibe nombre usuario
                 System.out.println("Bienvenido: " + username);
                 outputStream.writeUTF("Cuantas tareas has de realizar " + username + " ?"); // 5. pregunta el numero de tareas
 

@@ -18,7 +18,6 @@ public class Main {
             outputStream.writeUTF(username);  // 3. usuario envia su nombre
             System.out.println(inputStream.readUTF()); // 6. recibe peticion tareas servidor
 
-
             int tasksNumber = Integer.parseInt(scanner.nextLine());
             outputStream.writeInt(tasksNumber); // 7. envia al servidor el numero de tareas a realizar
 
