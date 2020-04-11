@@ -23,6 +23,8 @@ public class Main {
             System.out.println("Bienvenido: " +  username);
             outputStream.writeUTF("Cuantas tareas has de realizar " + username + " ?"); // 5. pregunta el numero de tareas
 
+            int taskNumber = inputStream.readInt(); // 8. recibe el numero de tareas
+            System.out.println("Se han recibido " + taskNumber + " tareas");
 
             //appServerSocket.clientSocket().close();
         }
