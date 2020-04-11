@@ -34,14 +34,18 @@ public class Main {
 
             System.out.println(inputStream.readUTF()); // 20. recibe aviso tareas
 
-            for (int i = 0; i < tasksNumber ; i++) {
+            for (int i = 0; i < tasksNumber; i++) {
                 System.out.println(inputStream.readUTF()); // 22. recibe tareas
             }
 
             clientSocket.close();
 
         } catch (IOException e) {
-            System.out.println(e);
+            System.out.println("Ha ocurrido un error: " + e.getLocalizedMessage());
+        } catch (Exception e) {
+            System.out.println("Ha ocurrido un error: " + e.getLocalizedMessage());
+        } finally {
+            clientSocket.close();
         }
     }
 }
