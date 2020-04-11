@@ -26,6 +26,16 @@ public class Main {
             int taskNumber = inputStream.readInt(); // 8. recibe el numero de tareas
             System.out.println("Se han recibido " + taskNumber + " tareas");
 
+            for (int i = 0; i < taskNumber ; i++) {
+                Tarea userTask = new Tarea();
+                String description = inputStream.readUTF(); // 10. recbe descripcion tarea
+                System.out.println("Descripcion recibida: " + description);
+                userTask.Descripcion = description;
+                String taskState = inputStream.readUTF(); // 12. recibe estado tarea
+                System.out.println("Estado de la tarea: " + taskState);
+                userTask.Estado = taskState;
+                appServerSocket.AddTaskToList(userTask);
+            }
 
 
             //appServerSocket.clientSocket().close();

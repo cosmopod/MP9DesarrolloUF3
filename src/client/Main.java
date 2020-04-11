@@ -22,7 +22,15 @@ public class Main {
             int tasksNumber = Integer.parseInt(scanner.nextLine());
             outputStream.writeInt(tasksNumber); // 7. envia al servidor el numero de tareas a realizar
 
-
+            for (int i = 0; i < tasksNumber; i++) {
+                System.out.println("Introduccion de la tarea: " + (i + 1));
+                System.out.println("Introduce la descripcion:");
+                String taskDescription = scanner.nextLine();
+                outputStream.writeUTF(taskDescription); // 9. Envia descripcion tarea
+                System.out.println("Introduce el estado de la tarea:");
+                String taskState = scanner.nextLine();
+                outputStream.writeUTF(taskState); // 11. Envia el estado de la tarea
+            }
 
             clientSocket.close();
 
