@@ -23,13 +23,13 @@ public class Main {
             outputStream.writeInt(tasksNumber); // 7. envia al servidor el numero de tareas a realizar
 
             for (int i = 0; i < tasksNumber; i++) {
-                System.out.println("Introduccion de la tarea: " + (i + 1));
-                System.out.println("Introduce la descripcion:");
-                String taskDescription = scanner.nextLine();
-                outputStream.writeUTF(taskDescription); // 9. Envia descripcion tarea
-                System.out.println("Introduce el estado de la tarea:");
+                System.out.println(inputStream.readUTF()); // 10. recibe peticion numero tarea
+                System.out.println(inputStream.readUTF()); //12 recibe solicitud descripcion
+                String description = scanner.nextLine();
+                outputStream.writeUTF(description); // 13. envia descripcion tarea
+                System.out.println(inputStream.readUTF()); // 16. recibe solicitud estado tarea
                 String taskState = scanner.nextLine();
-                outputStream.writeUTF(taskState); // 11. Envia el estado de la tarea
+                outputStream.writeUTF(taskState); // 17. envia estado de la tarea
             }
 
             clientSocket.close();

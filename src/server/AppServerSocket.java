@@ -32,6 +32,10 @@ public class AppServerSocket {
         client = serverSocket.accept();
     }
 
+    public ArrayList<Tarea> getUserTasks() {
+        return userTasks;
+    }
+
     public void AddTaskToList(Tarea task) {
 
         if (!userTasks.contains(task)) {

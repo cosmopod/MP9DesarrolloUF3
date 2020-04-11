@@ -28,14 +28,19 @@ public class Main {
 
             for (int i = 0; i < taskNumber ; i++) {
                 Tarea userTask = new Tarea();
-                String description = inputStream.readUTF(); // 10. recbe descripcion tarea
-                System.out.println("Descripcion recibida: " + description);
-                userTask.Descripcion = description;
-                String taskState = inputStream.readUTF(); // 12. recibe estado tarea
-                System.out.println("Estado de la tarea: " + taskState);
+                outputStream.writeUTF("Introduccion de la tarea: " + (i + 1)); // 9. envia cliente numero tarea
+                outputStream.writeUTF("descripcion de la tarea:"); // 11. solicita descripcion tarea
+                String taskDescription = inputStream.readUTF(); // 14. recibe description tarea
+                System.out.println("Descripcion recibida: " + taskDescription);
+                outputStream.writeUTF("Estado de la tarea:"); // 15. solicita estado tarea
+                String taskState = inputStream.readUTF(); // 18. recibe el estado de la tarea
+                System.out.println("Estado recibido: " + taskState);
+
+                userTask.Descripcion = taskDescription;
                 userTask.Estado = taskState;
                 appServerSocket.AddTaskToList(userTask);
             }
+
 
 
             //appServerSocket.clientSocket().close();
