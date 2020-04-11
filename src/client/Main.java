@@ -22,6 +22,8 @@ public class Main {
             int tasksNumber = Integer.parseInt(scanner.nextLine());
             outputStream.writeInt(tasksNumber); // 7. envia al servidor el numero de tareas a realizar
 
+
+
             clientSocket.close();
 
         } catch (IOException e) {

@@ -26,6 +26,8 @@ public class Main {
             int taskNumber = inputStream.readInt(); // 8. recibe el numero de tareas
             System.out.println("Se han recibido " + taskNumber + " tareas");
 
+
+
             //appServerSocket.clientSocket().close();
         }
     }

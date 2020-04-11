@@ -1,4 +1,5 @@
 package server;
+
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -29,6 +30,19 @@ public class AppServerSocket {
     public void Accept() throws IOException {
 
         client = serverSocket.accept();
+    }
+
+    public void AddTaskToList(Tarea task) {
+
+        if (!userTasks.contains(task)) {
+            userTasks.add(task);
+        }
+    }
+
+    public void ClearTasksList() {
+        if (userTasks.size() > 0) {
+            userTasks.clear();
+        }
     }
 
     public void Close() throws IOException {
