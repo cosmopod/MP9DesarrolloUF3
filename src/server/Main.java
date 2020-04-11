@@ -52,6 +52,7 @@ public class Main {
                 outputStream.writeUTF(taskMessage); // 21. envio de las tareas
             }
 
+            System.out.println("Encantado de verte " + username);
             appServerSocket.ClearTasksList();
             //appServerSocket.clientSocket().close();
         }
