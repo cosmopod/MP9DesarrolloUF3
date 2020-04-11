@@ -32,6 +32,12 @@ public class Main {
                 outputStream.writeUTF(taskState); // 17. envia estado de la tarea
             }
 
+            System.out.println(inputStream.readUTF()); // 20. recibe aviso tareas
+
+            for (int i = 0; i < tasksNumber ; i++) {
+                System.out.println(inputStream.readUTF()); // 22. recibe tareas
+            }
+
             clientSocket.close();
 
         } catch (IOException e) {

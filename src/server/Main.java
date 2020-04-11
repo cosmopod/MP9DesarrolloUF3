@@ -41,8 +41,18 @@ public class Main {
                 appServerSocket.AddTaskToList(userTask);
             }
 
+            System.out.println("Listado de tareas");
+            outputStream.writeUTF("Listado de tareas"); // 19. envia aviso tareas
 
+            for (Tarea task: appServerSocket.getUserTasks()) {
+                String taskMessage = "Tarea: ";
+                taskMessage += task.Descripcion;
+                taskMessage += ", con estado: ";
+                taskMessage += task.Estado;
+                outputStream.writeUTF(taskMessage); // 21. envio de las tareas
+            }
 
+            appServerSocket.ClearTasksList();
             //appServerSocket.clientSocket().close();
         }
     }
