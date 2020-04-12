@@ -9,16 +9,16 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        AppServerSocket appServerSocket = new AppServerSocket();
+        Server server = new Server();
 
         while (true) {
 
             String username = null;
             try {
-                appServerSocket.Accept();
+                server.Accept();
 
-                DataInputStream inputStream = new DataInputStream(appServerSocket.clientSocket().getInputStream());
-                DataOutputStream outputStream = new DataOutputStream(appServerSocket.clientSocket().getOutputStream());
+                DataInputStream inputStream = new DataInputStream(server.clientSocket().getInputStream());
+                DataOutputStream outputStream = new DataOutputStream(server.clientSocket().getOutputStream());
 
                 outputStream.writeUTF("Cual es tu nombre?"); // 1. Pregunta nombre cliente
                 username = inputStream.readUTF(); // 4. recibe nombre usuario
@@ -40,13 +40,13 @@ public class Main {
 
                     userTask.Descripcion = taskDescription;
                     userTask.Estado = taskState;
-                    appServerSocket.AddTaskToList(userTask);
+                    server.AddTaskToList(userTask);
                 }
 
                 System.out.println("Listado de tareas");
                 outputStream.writeUTF("Listado de tareas"); // 19. envia aviso tareas
 
-                for (Tarea task : appServerSocket.getUserTasks()) {
+                for (Tarea task : server.getUserTasks()) {
                     String taskMessage = "Tarea: ";
                     taskMessage += task.Descripcion;
                     taskMessage += ", con estado: ";
@@ -62,7 +62,7 @@ public class Main {
                 System.out.println("Ha ocurrido un error: " + e.getLocalizedMessage());
             }
 
-            appServerSocket.ClearTasksList();
+            server.ClearTasksList();
             //appServerSocket.clientSocket().close();
         }
     }

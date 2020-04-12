@@ -1,9 +1,9 @@
 package client;
-import server.AppServerSocket;
+import server.Server;
 import java.io.IOException;
 import java.net.Socket;
 
-public class ClientSocket {
+public class Client {
 
     private Socket socket;
     private boolean exit = false;
@@ -13,8 +13,8 @@ public class ClientSocket {
     }
 
 
-    public ClientSocket() throws IOException {
-        this.socket = new Socket(AppServerSocket.Host, AppServerSocket.Port);
+    public Client() throws IOException {
+        this.socket = new Socket(Server.Host, Server.Port);
     }
 
     public void close() throws IOException {

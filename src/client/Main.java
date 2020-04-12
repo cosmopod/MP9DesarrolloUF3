@@ -7,12 +7,12 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        ClientSocket clientSocket = new ClientSocket();
+        Client client = new Client();
         DataInputStream inputStream = null;
         DataOutputStream outputStream = null;
         try {
-            inputStream = new DataInputStream(clientSocket.getSocket().getInputStream());
-            outputStream = new DataOutputStream(clientSocket.getSocket().getOutputStream());
+            inputStream = new DataInputStream(client.getSocket().getInputStream());
+            outputStream = new DataOutputStream(client.getSocket().getOutputStream());
             Scanner scanner = new Scanner(System.in);
 
             System.out.println(inputStream.readUTF()); // 2. Recibe invitación servidor servidor
@@ -47,6 +47,6 @@ public class Main {
 
         if (inputStream != null) inputStream.close();
         if (outputStream != null) outputStream.close();
-        clientSocket.close();
+        client.close();
     }
 }

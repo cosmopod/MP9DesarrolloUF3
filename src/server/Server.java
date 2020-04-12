@@ -5,7 +5,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 
-public class AppServerSocket {
+public class Server {
     public static final int Port = 9876;
     public static final String Host = "localhost";
 
@@ -14,7 +14,7 @@ public class AppServerSocket {
     private ArrayList<Tarea> userTasks;
 
 
-    public AppServerSocket() throws IOException {
+    public Server() throws IOException {
         serverSocket = new ServerSocket(Port);
         client = new Socket();
         userTasks = new ArrayList<Tarea>();
