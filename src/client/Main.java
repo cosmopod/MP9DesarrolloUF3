@@ -8,9 +8,11 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws IOException {
         ClientSocket clientSocket = new ClientSocket();
+        DataInputStream inputStream = null;
+        DataOutputStream outputStream = null;
         try {
-            DataInputStream inputStream = new DataInputStream(clientSocket.getSocket().getInputStream());
-            DataOutputStream outputStream = new DataOutputStream(clientSocket.getSocket().getOutputStream());
+            inputStream = new DataInputStream(clientSocket.getSocket().getInputStream());
+            outputStream = new DataOutputStream(clientSocket.getSocket().getOutputStream());
             Scanner scanner = new Scanner(System.in);
 
             System.out.println(inputStream.readUTF()); // 2. Recibe invitación servidor servidor
@@ -37,14 +39,14 @@ public class Main {
                 System.out.println(inputStream.readUTF()); // 22. recibe tareas
             }
 
-            clientSocket.close();
-
         } catch (IOException e) {
             System.out.println("Ha ocurrido un error: " + e.getLocalizedMessage());
         } catch (Exception e) {
             System.out.println("Ha ocurrido un error: " + e.getLocalizedMessage());
-        } finally {
-            clientSocket.close();
         }
+
+        if (inputStream != null) inputStream.close();
+        if (outputStream != null) outputStream.close();
+        clientSocket.close();
     }
 }
